@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import ShowInfo from './ShowInfo';
 
 type TProduct = {
   id : number;
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-     
+     <ShowInfo />
     </div>
   )
 }
