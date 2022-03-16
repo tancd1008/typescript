@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard';
 import ManagerProduct from './pages/ManagerProduct';
 import Product from './pages/Product';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // type TProduct = {
 //   id : number;
 //   name: string
