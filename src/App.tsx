@@ -5,6 +5,7 @@ import ShowInfo from './components/ShowInfo';
 import type { ProductType } from './types/product';
 import axios from 'axios';
 import { list, remove } from './api/product';
+import { NavLink, Route,  Routes } from 'react-router-dom';
 
 // type TProduct = {
 //   id : number;
@@ -36,7 +37,7 @@ function App() {
  
   return (
     <div className="App">
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>#</th>
@@ -55,7 +56,22 @@ function App() {
             </tr>
           })}
         </tbody>
-      </table>
+      </table> */}
+      <header>
+        <ul>
+          <li><NavLink to='/'>Home page</NavLink></li>
+          <li><NavLink to='/product'>Product page</NavLink></li>
+          <li><NavLink to='/about'>Product page</NavLink></li>
+          <li></li>
+        </ul>
+      </header>
+      <main>
+        <Routes>
+          <Route path='/' element={<h1>Home Page</h1>}></Route>
+          <Route path='product' element={<h1>Product Page</h1>}></Route>
+          <Route path='about' element={<h1>ABout Page</h1>}></Route>
+        </Routes>
+      </main>
     </div>
   )
 }
