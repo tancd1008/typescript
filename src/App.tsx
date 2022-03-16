@@ -39,8 +39,8 @@ function App() {
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th></th>
+            <th>#</th>
+            <th>Name</th>
             <th></th>
           </tr>
         </thead>
