@@ -5,7 +5,13 @@ import ShowInfo from './components/ShowInfo';
 import type { ProductType } from './types/product';
 import axios from 'axios';
 import { list, remove } from './api/product';
-import { NavLink, Route,  Routes } from 'react-router-dom';
+import { Navigate, NavLink, Route,  Routes } from 'react-router-dom';
+import WebsiteLayout from './pages/layouts/WebsiteLayout';
+import Home from './pages/Home';
+import AdminLayout from './pages/layouts/AdminLayout';
+import Dashboard from './pages/Dashboard';
+import ManagerProduct from './pages/ManagerProduct';
+import Product from './pages/Product';
 
 // type TProduct = {
 //   id : number;
@@ -61,15 +67,23 @@ function App() {
         <ul>
           <li><NavLink to='/'>Home page</NavLink></li>
           <li><NavLink to='/product'>Product page</NavLink></li>
-          <li><NavLink to='/about'>Product page</NavLink></li>
+          <li><NavLink to='/admin/dashboard'>Admin</NavLink></li>
           <li></li>
         </ul>
       </header>
       <main>
         <Routes>
-          <Route path='/' element={<h1>Home Page</h1>}></Route>
-          <Route path='product' element={<h1>Product Page</h1>}></Route>
-          <Route path='about' element={<h1>ABout Page</h1>}></Route>
+          <Route path='/' element={<WebsiteLayout/>}>
+            <Route index element={<Home/>} />
+            <Route path='product' element={<Product/>} />
+          </Route>
+          <Route path='admin' element={<AdminLayout/>}>
+          <Route index element={<Navigate to="dashboard"/>} />
+          <Route path='dashboard' element={<Dashboard/>} />
+          <Route path='product' element={<ManagerProduct/>} />
+
+          </Route>
+          
         </Routes>
       </main>
     </div>
