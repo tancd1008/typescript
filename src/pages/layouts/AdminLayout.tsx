@@ -7,7 +7,7 @@ const AdminLayout = (props: Props) => {
   return (
     <div>
         <header>
-            Header Admin
+            Header Admin 1
         </header>
         <aside>
             Menu Trai
