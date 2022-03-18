@@ -27,12 +27,12 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       const {data} = await list();
-      console.log(data);
       setProducts(data);
     }
     getProducts();
   },[])
  const onHandeAdd = async (product : ProductType) => {
+   console.log(product);
    const {data} = await add(product);
    setProducts([...products, product]);
  }
