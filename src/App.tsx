@@ -4,7 +4,7 @@ import './App.css'
 import ShowInfo from './components/ShowInfo';
 import type { ProductType } from './types/product';
 import axios from 'axios';
-import { list, remove } from './api/product';
+import { add, list, remove } from './api/product';
 import { Navigate, NavLink, Route,  Routes } from 'react-router-dom';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import Home from './pages/Home';
@@ -14,6 +14,7 @@ import ManagerProduct from './pages/ManagerProduct';
 import Product from './pages/Product';
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import ProductAdd from './pages/admin/ProductAdd';
 
 // type TProduct = {
 //   id : number;
@@ -31,7 +32,10 @@ function App() {
     }
     getProducts();
   },[])
- 
+ const onHandeAdd = async (product : ProductType) => {
+   const {data} = await add(product);
+   setProducts([...products, product]);
+ }
  
   return (
     <div className="App">
@@ -73,6 +77,7 @@ function App() {
           <Route index element={<Navigate to="dashboard"/>} />
           <Route path='dashboard' element={<Dashboard/>} />
           <Route path='product' element={<ManagerProduct/>} />
+          <Route path='/admin/product/add' element={<ProductAdd onAdd={onHandeAdd}/>} />
 
           </Route>
           

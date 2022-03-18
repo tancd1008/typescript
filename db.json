@@ -1,8 +1,24 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Product 1"
+      "name": "Cao Dang Tan",
+      "price": "123456789",
+      "id": 1
+    },
+    {
+      "name": "Cao Dang Tan 1",
+      "price": "123456",
+      "id": 2
+    },
+    {
+      "name": "Cao Dang Tan 2",
+      "price": "123456",
+      "id": 3
+    },
+    {
+      "name": "Cao Dang Tan 4",
+      "price": "1234567",
+      "id": 4
     }
   ]
 }
