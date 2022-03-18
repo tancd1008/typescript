@@ -31,17 +31,7 @@ function App() {
     }
     getProducts();
   },[])
-  const removeItem = async (id: number) => {
-    // xoa tren API
-    const { data } = await remove(id);
-    console.log(data);
-    // reRender
-    
-    const newProducts = products.filter(item => item.id !== id);
-    console.log(newProducts);
-    setProducts(newProducts);
-
-  }
+ 
  
   return (
     <div className="App">
