@@ -21,7 +21,7 @@
       "id": 4
     },
     {
-      "name": "Cao Dang Tan 3",
+      "name": "Cao Dang Tan 33",
       "price": "12345678",
       "id": 5
     },
@@ -29,11 +29,6 @@
       "name": "Cao Dang Tan 5",
       "price": "12345678",
       "id": 6
-    },
-    {
-      "name": "Cao Dang Tan 6",
-      "price": "1234444444444",
-      "id": 7
     }
   ]
 }

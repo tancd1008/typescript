@@ -4,7 +4,7 @@ import './App.css'
 import ShowInfo from './components/ShowInfo';
 import type { ProductType } from './types/product';
 import axios from 'axios';
-import { add, list, remove } from './api/product';
+import { add, list, remove, update } from './api/product';
 import { Navigate, NavLink, Route,  Routes } from 'react-router-dom';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
 import Home from './pages/Home';
@@ -15,6 +15,7 @@ import Product from './pages/Product';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProductAdd from './pages/admin/ProductAdd';
+import ProductEdit from './pages/ProductEdit';
 
 // type TProduct = {
 //   id : number;
@@ -31,34 +32,28 @@ function App() {
     }
     getProducts();
   },[])
- const onHandeAdd = async (product : ProductType) => {
-   console.log(product);
-   const {data} = await add(product);
-   setProducts([...products, product]);
- }
+
+ const onHandleRemove = async (id: number) => {
+  // xoa tren API
+  await remove(id);
+  // reRender
+  setProducts(products.filter(item => item.id !== id));
+}
+
+const onHandleAdd = async (product: ProductType) => {
+  // call api
+  const { data} = await add(product);
+  setProducts([...products, data])
+}
+const onHandleUpdate = async (product:ProductType) => {
+    const {data} = await update(product)
+    console.log(data);
+    setProducts(products.map(item => item.id == data.id ? data : item))
+}
  
   return (
     <div className="App">
-      {/* <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((item, index) => {
-            return <tr>
-              <th>{index +1}</th>
-              <th>{item.name}</th>
-              <th>
-                <button onClick={() => removeItem(item.id) }>Remove</button>
-              </th>
-            </tr>
-          })}
-        </tbody>
-      </table> */}
+      
       <header>
         <ul>
           <li><NavLink to='/'>Home page</NavLink></li>
@@ -73,13 +68,15 @@ function App() {
             <Route index element={<Home/>} />
             <Route path='product' element={<Product/>} />
           </Route>
-          <Route path='admin' element={<AdminLayout/>}>
-          <Route index element={<Navigate to="dashboard"/>} />
-          <Route path='dashboard' element={<Dashboard/>} />
-          <Route path='product' element={<ManagerProduct/>} />
-          <Route path='/admin/product/add' element={<ProductAdd onAdd={onHandeAdd}/>} />
-
-          </Route>
+          <Route path="admin" element={<AdminLayout />}> 
+        <Route index element={<Navigate to="dashboard"/>} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="product">
+          <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove}/>} />
+          <Route path="add" element={<ProductAdd onAdd={onHandleAdd}/>} />
+          <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>} />
+        </Route>
+      </Route>
           
         </Routes>
       </main>
