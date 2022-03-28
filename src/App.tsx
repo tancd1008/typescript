@@ -12,13 +12,12 @@ import AdminLayout from './pages/layouts/AdminLayout';
 import Dashboard from './pages/Dashboard';
 import ManagerProduct from './pages/ManagerProduct';
 import Product from './pages/Product';
-
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
-import Signup from './pages/signup';
 import { UserType } from './types/user';
 import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 // type TProduct = {
 //   id : number;

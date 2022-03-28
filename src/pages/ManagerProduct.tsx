@@ -10,7 +10,7 @@ type ManagerProductProps = {
 const ManagerProduct = (props: ManagerProductProps) => {
   return (
     <div className='container'>
-        <table className='table table-bordered'>
+        <table className='table-auto'>
             <thead>
                 <tr>
                     <th>#</th>
