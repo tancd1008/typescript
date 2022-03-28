@@ -16,6 +16,9 @@ import Product from './pages/Product';
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProductAdd from './pages/admin/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
+import Signup from './pages/signup';
+import { UserType } from './types/user';
+import Signin from './pages/Signin';
 
 // type TProduct = {
 //   id : number;
@@ -50,6 +53,7 @@ const onHandleUpdate = async (product:ProductType) => {
     console.log(data);
     setProducts(products.map(item => item.id == data.id ? data : item))
 }
+
  
   return (
     <div className="App">
@@ -67,6 +71,8 @@ const onHandleUpdate = async (product:ProductType) => {
           <Route path='/' element={<WebsiteLayout/>}>
             <Route index element={<Home/>} />
             <Route path='product' element={<Product/>} />
+            <Route path='signup' element={<Signup />} />
+            <Route path='signin' element={<Signin />} />
           </Route>
           <Route path="admin" element={<AdminLayout />}> 
         <Route index element={<Navigate to="dashboard"/>} />
