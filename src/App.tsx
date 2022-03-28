@@ -14,7 +14,7 @@ import ManagerProduct from './pages/ManagerProduct';
 import Product from './pages/Product';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import ProductAdd from './pages/admin/ProductAdd';
+import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
 import Signup from './pages/signup';
 import { UserType } from './types/user';
