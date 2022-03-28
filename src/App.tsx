@@ -61,7 +61,7 @@ const onHandleUpdate = async (product:ProductType) => {
       <header>
         <ul>
           <li><NavLink to='/'>Home page</NavLink></li>
-          <li><NavLink to='/product'>Product page</NavLink></li>
+          <li><NavLink to='/product'>Product </NavLink></li>
           <li><NavLink to='/admin/dashboard'>Admin</NavLink></li>
           <li></li>
         </ul>
