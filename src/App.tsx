@@ -57,14 +57,7 @@ const onHandleUpdate = async (product:ProductType) => {
   return (
     <div className="App">
       
-      <header>
-        <ul>
-          <li><NavLink to='/'>Home page</NavLink></li>
-          <li><NavLink to='/product'>Product </NavLink></li>
-          <li><NavLink to='/admin/dashboard'>Admin</NavLink></li>
-          <li></li>
-        </ul>
-      </header>
+      
       <main>
         <Routes>
           <Route path='/' element={<WebsiteLayout/>}>

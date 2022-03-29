@@ -10,9 +10,9 @@ type ManagerProductProps = {
 const ManagerProduct = (props: ManagerProductProps) => {
   return (
     <div className='container'>
-        <table className='table-auto'>
+        <table className='table '>
             <thead>
-                <tr>
+                <tr className='table-primary'>
                     <th>#</th>
                     <th>Name</th>
                     <th></th>

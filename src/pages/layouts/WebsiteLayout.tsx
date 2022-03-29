@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import HeaderWeb from '../../components/HeaderWeb'
 
 type Props = {}
 
@@ -7,7 +8,7 @@ const WebsiteLayout = (props: Props) => {
   return (
     <div>
         <header>
-            Header Website 1 23
+            <HeaderWeb/>
         </header>
         <main>
             <Outlet/>
