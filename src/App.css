@@ -43,3 +43,7 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+.menu-left {
+  width: 200px;
+  height: 745px;
+}
