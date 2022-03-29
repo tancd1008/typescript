@@ -16,9 +16,9 @@ import Product from './pages/Product';
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProductAdd from './pages/ProductAdd';
 import ProductEdit from './pages/ProductEdit';
-import Signup from './pages/signup';
 import { UserType } from './types/user';
 import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 // type TProduct = {
 //   id : number;
@@ -51,7 +51,7 @@ const onHandleAdd = async (product: ProductType) => {
 const onHandleUpdate = async (product:ProductType) => {
     const {data} = await update(product)
     console.log(data);
-    setProducts(products.map(item => item._id == data.id ? data : item))
+    setProducts(products.map(item => item._id == data._id ? data : item))
 }
 
  
