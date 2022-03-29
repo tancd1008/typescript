@@ -40,7 +40,7 @@ function App() {
   // xoa tren API
   await remove(id);
   // reRender
-  setProducts(products.filter(item => item.id !== id));
+  setProducts(products.filter(item => item._id !== id));
 }
 
 const onHandleAdd = async (product: ProductType) => {
@@ -51,7 +51,7 @@ const onHandleAdd = async (product: ProductType) => {
 const onHandleUpdate = async (product:ProductType) => {
     const {data} = await update(product)
     console.log(data);
-    setProducts(products.map(item => item.id == data.id ? data : item))
+    setProducts(products.map(item => item._id == data.id ? data : item))
 }
 
  
