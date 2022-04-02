@@ -1,22 +1,24 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import HeaderAdmin from '../../components/HeaderAdmin'
 import MenuAdmin from '../../components/MenuAdmin'
 
 type Props = {}
 
 const AdminLayout = (props: Props) => {
   return (
-    <div>
-        
-        <main>
-        <aside className='float-start'>
-            <MenuAdmin/>
+    <div >
+        <header >
+          <HeaderAdmin/>
+        </header>
+        <div className='flex'>
+        <aside >
+          <MenuAdmin/>
         </aside>
-        <div >
-
-            <Outlet/>
-        </div>
+        <main className='w-100' >
+          <Outlet/>
         </main>
+        </div> 
     </div>
   )
 }
