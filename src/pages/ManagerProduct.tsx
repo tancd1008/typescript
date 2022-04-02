@@ -8,8 +8,9 @@ type ManagerProductProps = {
 }
 
 const ManagerProduct = (props: ManagerProductProps) => {
+  console.log(props)
   return (
-    <div className='container'>
+    <div className=''>
         <table className='table '>
             <thead>
                 <tr className='table-primary'>

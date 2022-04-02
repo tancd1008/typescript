@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Banner from './Banner'
 import MenuWebsite from './MenuWebsite'
 import Search from './Search'
 
@@ -30,6 +31,9 @@ const HeaderWeb = (props: Props) => {
                 </div>
             </div>
         </nav>
+        <div>
+            <Banner/>
+        </div>
     </div>
   )
 }

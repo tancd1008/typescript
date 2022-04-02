@@ -18,14 +18,11 @@ import ProductEdit from './pages/ProductEdit';
 import { UserType } from './types/user';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
-
 // type TProduct = {
 //   id : number;
 //   name: string
 // }
 function App() {
-  // const [count, setCount] = useState<number>(0);
-  // const [products, setProducts] = useState<TProduct[]>([{id: 1, name: "Tan"}])
   const [products, setProducts] = useState<ProductType[]>([]);
   useEffect(() => {
     const getProducts = async () => {
@@ -41,7 +38,6 @@ function App() {
   // reRender
   setProducts(products.filter(item => item.id !== id));
 }
-
 const onHandleAdd = async (product: ProductType) => {
   // call api
   const { data} = await add(product);
@@ -57,11 +53,10 @@ const onHandleUpdate = async (product:ProductType) => {
   return (
     <div className="App">
       
-      
       <main>
         <Routes>
           <Route path='/' element={<WebsiteLayout/>}>
-            <Route index element={<Home/>} />
+            <Route index element={<Home data={products}/>} />
             <Route path='product' element={<Product/>} />
             <Route path='signup' element={<Signup />} />
             <Route path='signin' element={<Signin />} />
