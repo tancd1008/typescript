@@ -9,13 +9,13 @@ const Banner = (props: Props) => {
         <div className="swiper">
             <div className="swiper-wrapper">
                 <div className="swiper-slide">
-                    <img src="https://static.cdnno.com/storage/topbox/f32aeebc55f3cff0e095634cdefa9d64.jpg" />
+                    <img src="https://res.cloudinary.com/tancd/image/upload/v1648896825/banner_1_n2cw01.jpg" />
                 </div>
                 <div className="swiper-slide">
-                    <img src="https://static.cdnno.com/storage/topbox/53696630fb0c72563da79720b565b08b.jpg" />    
+                    <img src="https://res.cloudinary.com/tancd/image/upload/v1648896825/banner_1_n2cw01.jpg" />    
                 </div>
                 <div className="swiper-slide">
-                    <img src="https://static.cdnno.com/storage/topbox/8da8e131fca14cbd9b65154d8d2e20d0.jpg" />    
+                    <img src="https://res.cloudinary.com/tancd/image/upload/v1648896825/banner_1_n2cw01.jpg" />    
                 </div>
             </div>
             <div className="swiper-button-next"></div>
