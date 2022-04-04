@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Banner from './Banner'
+import LoginWeb from './LoginWeb'
 import MenuWeb from './MenuWeb'
 import Search from './Search'
 
@@ -28,6 +29,9 @@ const HeaderWeb = (props: Props) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <MenuWeb />
                 <Search />
+                <div className='float-end col-6'>
+                  <LoginWeb/>
+                </div>
                 </div>
             </div>
         </nav>
