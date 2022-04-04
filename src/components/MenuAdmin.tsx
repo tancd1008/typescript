@@ -19,6 +19,12 @@ const MenuAdmin = (props: Props) => {
                 <NavLink className="nav-link text-white" aria-current="page" to="/admin/product/add">Add Product</NavLink>
                 </li>
                 <li>
+                <NavLink className="nav-link text-white" aria-current="page" to="/admin/categories">Categories</NavLink>
+                </li>
+                <li>
+                <NavLink className="nav-link text-white" aria-current="page" to="/admin/categories/add">Add category</NavLink>
+                </li>
+                <li>
                 <NavLink className="nav-link text-white" aria-current="page" to="/admin/dashboard">Sign Out</NavLink>
                 </li>
             </ul>

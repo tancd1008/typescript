@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProductType } from "../types/product";
+import { CateType } from "../types/categories";
 
 type ManagerProductProps = {
-  data: ProductType[];
+  data: CateType[];
   onRemove: (id: number) => void;
 };
 
@@ -11,6 +11,7 @@ const ManagerProduct = (props: ManagerProductProps) => {
   console.log(props);
   return (
     <div className="">
+      <h3>Quản lý sản phẩm</h3>
       <table className="table ">
         <thead>
           <tr className="table-primary">

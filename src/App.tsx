@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import { useEffect, useState } from "react";
 import { ProductType } from "./types/product";
 import { add, list, remove, update } from "./api/product";
+
 import DetailProduct from "./pages/DetailProduct";
 import Dashboars from "./pages/Dashboard";
 import Dashboard from "./pages/Dashboard";
@@ -17,9 +18,15 @@ import ProductAdd from "./pages/ProductAdd";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import ProductEdit from "./pages/ProductEdit";
+import CateManager from "./pages/CateManager";
+import { addCate, listCate } from "./api/category";
+import CateAdd from "./pages/CateAdd";
+import { CateType } from "./types/categories";
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [categories, setCategories] = useState<ProductType[]>([]);
+  
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -27,15 +34,22 @@ function App() {
       // console.log(data)
     };
     getProducts();
+    const getCategories = async () => {
+      const { data } = await listCate();
+      setCategories(data);
+      // console.log(data)
+    };
+    getCategories();
   }, []);
+ 
   const onHandleRemove = async (id: number) => {
     await remove(id);
     setProducts(products.filter((item) => item._id !== id));
   };
   const onHandleAdd = async (product: ProductType) => {
-    console.log(product)
+    // console.log(product)
     const { data } = await add(product);
-    console.log(data);
+    // console.log(data);
     
     setProducts([...products, data]);
   }
@@ -44,7 +58,12 @@ function App() {
     console.log(data);
     setProducts(products.map(item => item._id == data._id ? data : item))
 }
-
+// Categories
+  const onHandleAddCate = async (category: CateType) => {
+    console.log(category);
+    const {data} = await addCate(category);
+    setCategories([...categories,data])
+  }
   return (
     <div className="App">
       <main>
@@ -61,8 +80,12 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
               <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove} />}/>
-              <Route path="add" element={<ProductAdd onAdd={onHandleAdd}  />} />
+              <Route path="add" element={<ProductAdd onAdd={onHandleAdd} cate={categories}  />} />
               <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>} />
+            </Route>
+            <Route path="categories">
+              <Route index element={<CateManager data={categories}/> }/>
+              <Route path="add" element={<CateAdd onAdd={onHandleAddCate}/>} />
             </Route>
           </Route>
         </Routes>
