@@ -18,7 +18,7 @@ const WebLayout = (props: CateProps) => {
           {props.cate?.map((item,index) => {
             return <div className='col' key={index}>
               
-              <NavLink to={`category/${item._id}`} >{item.name}</NavLink>
+              <NavLink className='btn btn-secondary' to={`category/${item._id}`} >{item.name}</NavLink>
             </div>
           })}
         </div>
