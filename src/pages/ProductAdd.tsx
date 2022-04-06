@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import toastr from 'toastr'
+import "toastr/build/toastr.min.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ProductType } from "../types/product";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { listCate } from "../api/category";
 import { CateType } from "../types/categories";
+import { uploadFile } from "../utils/uploadFile";
 type ProductAddProps = {
     onAdd: (product: ProductType) => void;
     cate: CateType[]
@@ -19,12 +22,27 @@ type FormValues = {
 
 const ProductAdd = (props: ProductAddProps) => {
     const [categories, setCategories] = useState<ProductType[]>([]);
+    const [preview, setPreview] = useState<string>();
     const navigate = useNavigate();
-    const {register,handleSubmit, watch,formState: { errors }} = useForm<FormValues>();
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
-        // console.log(data);
-        props.onAdd(data);
-        navigate('/admin/product')
+    const {register,handleSubmit,formState: { errors }} = useForm<FormValues>();
+    const handlePreview = (e: any) => {
+        setPreview(URL.createObjectURL(e.target.files[0]));
+    }
+    const onSubmit: SubmitHandler<FormValues> =  async (data) => {
+        try {
+            const url= await uploadFile(data.img[0]);
+            data.img = url,
+            console.log(data);
+            props.onAdd(data);
+            toastr.success("Bạn thêm thành công!")
+            setTimeout(()=> {
+                navigate('/admin/product')
+                
+            },2000)
+        } catch (error) {
+            toastr.error("Lỗi");
+        }
+        
     };
    
     return (
@@ -46,12 +64,7 @@ const ProductAdd = (props: ProductAddProps) => {
                     </div>
                     <input type="number" className="form-control" {...register("price")} placeholder='Nhap gia'/>
                 </div>
-                <div className="mb-3">
-                    <div className="float-start">
-                        <label htmlFor="">Ảnh</label>
-                    </div>
-                    <input type="text" className="form-control" {...register("img")} placeholder='anh'/>
-                </div>
+                
                 <div className="mb-3">
                     <div className="float-start">
                         <label htmlFor="">Loại hàng</label>
@@ -63,6 +76,15 @@ const ProductAdd = (props: ProductAddProps) => {
                         
                     </select>
                 </div>
+                <div className="mb-3">
+                    <div className="float-start">
+                        <label htmlFor="">Ảnh</label>
+                    </div>
+                    <input  id="file-upload" type="file" {...register('img',{required:true})} className="form-control" />
+                </div>
+                {/* <div className="mb-3">
+                        <img src={preview || "https://res.cloudinary.com/tancd/image/upload/v1649231678/no-thumbnail-medium-16315289445371324098298-0-0-620-992-crop-16315296413801134506614_vc8xjb_gmweq6.png"}  alt="" />
+                </div> */}
                 <button className="btn btn-success">Thêm mới sản phẩm</button>
             </form>
         </div>

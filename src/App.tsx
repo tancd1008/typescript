@@ -56,8 +56,9 @@ function App() {
     setProducts([...products, data]);
   }
   const onHandleUpdate = async (product:ProductType) => {
+    // console.log(product)
     const {data} = await update(product)
-    console.log(data);
+    // console.log(data);
     setProducts(products.map(item => item._id == data._id ? data : item))
 }
 // Categories
@@ -83,7 +84,7 @@ function App() {
             <Route path="product">
               <Route index element={<ManagerProduct data={products} onRemove={onHandleRemove} />}/>
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} cate={categories}  />} />
-              <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>} />
+              <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} cate={categories}/> } />
             </Route>
             <Route path="categories">
               <Route index element={<CateManager data={categories}/> }/>
