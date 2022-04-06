@@ -1,15 +1,27 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import HeaderWeb from '../../components/HeaderWeb'
+import { CateType } from '../../types/categories'
 
-type Props = {}
+type CateProps = {
+  cate: CateType[]
+}
 
-const WebLayout = (props: Props) => {
+const WebLayout = (props: CateProps) => {
+  console.log(props.cate)
   return (
     <div>
         <header>
             <HeaderWeb/>
         </header>
+        <div className='row m-3'>
+          {props.cate?.map((item,index) => {
+            return <div className='col' key={index}>
+              
+              <NavLink to={`category/${item._id}`} >{item.name}</NavLink>
+            </div>
+          })}
+        </div>
         <main>
             <Outlet/>
         </main>

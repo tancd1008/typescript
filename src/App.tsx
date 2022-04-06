@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import WebLayout from "./pages/layout/WebLayout";
 import AdminLayout from "./pages/layout/AdminLayout";
 import Product from "./pages/Product";
@@ -22,11 +22,13 @@ import CateManager from "./pages/CateManager";
 import { addCate, listCate } from "./api/category";
 import CateAdd from "./pages/CateAdd";
 import { CateType } from "./types/categories";
+import PrivateRouter from "./components/PrivateRouter";
+import Category from "./pages/Category";
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [categories, setCategories] = useState<ProductType[]>([]);
-  
+  const {id} = useParams();
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -40,6 +42,7 @@ function App() {
       // console.log(data)
     };
     getCategories();
+    
   }, []);
  
   const onHandleRemove = async (id: number) => {
@@ -50,7 +53,6 @@ function App() {
     // console.log(product)
     const { data } = await add(product);
     // console.log(data);
-    
     setProducts([...products, data]);
   }
   const onHandleUpdate = async (product:ProductType) => {
@@ -68,14 +70,14 @@ function App() {
     <div className="App">
       <main>
         <Routes>
-          <Route path="/" element={<WebLayout />}>
+          <Route path="/" element={<WebLayout cate={categories} />}>
             <Route index element={<Product products={products} />} />
             <Route path="products/:id" element={<DetailProduct />} />
             <Route path="signup" element={<Signup />} />
             <Route path="signin" element={<Signin />} />
-
+            <Route path="category/:id" element={<Category />} />
           </Route>
-          <Route path="admin" element={<AdminLayout />}>
+          <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
             <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
@@ -86,6 +88,7 @@ function App() {
             <Route path="categories">
               <Route index element={<CateManager data={categories}/> }/>
               <Route path="add" element={<CateAdd onAdd={onHandleAddCate}/>} />
+
             </Route>
           </Route>
         </Routes>

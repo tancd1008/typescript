@@ -2,6 +2,7 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { singin } from '../api/user'
+import { authenticated } from '../utils/localStorage'
 
 type Props = {}
 type FormInput = {
@@ -14,8 +15,10 @@ const Signin = (props: Props) => {
   const {register,handleSubmit,formState:{errors}} = useForm<FormInput>()
   const onSubmit:SubmitHandler<FormInput> = async (data)=>{
       const {data: user } = await singin(data);
-      localStorage.setItem('user', JSON.stringify(user))
-      navigate("/")
+      console.log(user)
+      authenticated(user, () => {
+        navigate('/');
+    })
   }
   return (
     <div>

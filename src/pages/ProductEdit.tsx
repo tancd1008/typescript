@@ -70,7 +70,7 @@ const ProductEdit = (props: ProductEditProps) => {
                 placeholder='anh'
             />
         </div>
-        <button className="btn btn-success">Thêm mới sản phẩm</button>
+        <button className="btn btn-success">Cập nhật sản phẩm</button>
     </form>
 </div>
   )

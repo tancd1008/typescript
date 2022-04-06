@@ -8,6 +8,7 @@ import Search from './Search'
 type Props = {}
 
 const HeaderWeb = (props: Props) => {
+  // console.log(props)
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,6 +30,7 @@ const HeaderWeb = (props: Props) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <MenuWeb />
                 <Search />
+                
                 <div className='float-end col-6'>
                   <LoginWeb/>
                 </div>

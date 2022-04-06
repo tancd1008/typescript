@@ -23,9 +23,7 @@ const Category = (props: ProductProps) => {
       
     <div>
         <div className='row '>
-            {products && products.map((item,index) => {
-              
-            })}
+            
         </div>
     </div>
   )

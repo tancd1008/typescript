@@ -8,18 +8,18 @@ type ProductProps = {
 }
 
 const Product = (props: ProductProps) => {
-  console.log(props.products)
+  // console.log(props.products)
   return (
     <div>
        <div className=''>
       <div>
-        <div className='row'>
+        <div className='row '>
           {props.products && props.products.map((item,index) => {
-            return <div className='col-3' key={index}>
+            return <div className='col-3 border border-3 mb-3 ' key={index}>
               <NavLink to={`/products/${item._id}`}>
-                <div>{item.name}</div> 
+                <div className='fw-bolder inline-block text-gray-900'>{item.name}</div> 
                 <img src={item.img} alt="" />
-                <span>{item.price}</span>
+                <span className='inline-block text-danger'>{item.price}$</span>
               </NavLink>
             </div>
           })}
