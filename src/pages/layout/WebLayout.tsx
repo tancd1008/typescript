@@ -14,14 +14,7 @@ const WebLayout = (props: CateProps) => {
         <header>
             <HeaderWeb/>
         </header>
-        <div className='row m-3'>
-          {props.cate?.map((item,index) => {
-            return <div className='col' key={index}>
-              
-              <NavLink className='btn btn-secondary' to={`category/${item._id}`} >{item.name}</NavLink>
-            </div>
-          })}
-        </div>
+        
         <main>
             <Outlet/>
         </main>

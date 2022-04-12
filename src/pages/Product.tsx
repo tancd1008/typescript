@@ -1,18 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import CateList from '../components/CateList'
 import { ProductType } from '../types/product'
 
 type ProductProps = {
   products: ProductType[]
-  
 }
 
 const Product = (props: ProductProps) => {
-  // console.log(props.products)
+  
   return (
     <div>
-       <div className=''>
-      <div>
+        <div className='row'>
+          <CateList/>
+        <div>
         <div className='row '>
           {props.products && props.products.map((item,index) => {
             return <div className='col-3 border border-3 mb-3 ' key={index}>

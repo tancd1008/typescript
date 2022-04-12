@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import { readCate } from '../api/category';
+import CateList from '../components/CateList';
 import { CateType } from '../types/categories'
 import { ProductType } from '../types/product';
 
@@ -27,6 +28,9 @@ const Category = (props: ProductProps) => {
   return (
       
     <div>
+        <div className='row'>
+          {/* <CateList/> */}
+        </div>
         <div className='row '>
             {products && products.product.map((item,index) => {
               return <div className='col-3 border border-3 mb-3 ' key={index}>
