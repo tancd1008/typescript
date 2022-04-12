@@ -5,7 +5,7 @@ type Props = {}
 
 const Banner = (props: Props) => {
   return (
-    <div>
+    <div className='mb-3'>
         <div className="swiper">
             <div className="swiper-wrapper">
                 <div className="swiper-slide">

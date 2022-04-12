@@ -1,4 +1,6 @@
 import React from 'react'
+import toastr from 'toastr'
+import "toastr/build/toastr.min.css";
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { singin } from '../api/user'
@@ -14,11 +16,20 @@ const Signin = (props: Props) => {
   const navigate = useNavigate()
   const {register,handleSubmit,formState:{errors}} = useForm<FormInput>()
   const onSubmit:SubmitHandler<FormInput> = async (data)=>{
+    try {
       const {data: user } = await singin(data);
       console.log(user)
-      authenticated(user, () => {
-        navigate('/');
-    })
+      toastr.success("Đăng Nhập Thành công")
+      setTimeout(() => {
+        authenticated(user, () => {
+          navigate('/');
+      })
+      },2000)
+      
+    } catch (error) {
+      toastr.error("Tài khoản hoặc mật khẩu không chính xác")
+    }
+      
   }
   return (
     <div>
