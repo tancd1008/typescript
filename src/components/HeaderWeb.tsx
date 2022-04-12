@@ -8,7 +8,7 @@ import Search from './Search'
 type Props = {}
 
 const HeaderWeb = (props: Props) => {
-  // console.log(props)
+  
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
