@@ -25,7 +25,7 @@ const MenuAdmin = (props: Props) => {
                 <NavLink className="nav-link text-white" aria-current="page" to="/admin/categories/add">Add category</NavLink>
                 </li>
                 <li>
-                <NavLink className="nav-link text-white" aria-current="page" to="/admin/dashboard">Sign Out</NavLink>
+                <NavLink className="nav-link text-white" aria-current="page" to="/">WebSite</NavLink>
                 </li>
             </ul>
             

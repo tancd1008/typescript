@@ -17,8 +17,10 @@ type FormInputs = {
     name: string,
     price: number,
     img:string,
-    category:number
+    category:number,
+    desc:string
 }
+
 
 const ProductEdit = (props: ProductEditProps) => {
     const { id } = useParams();
@@ -40,7 +42,7 @@ const ProductEdit = (props: ProductEditProps) => {
             console.log(data);
             
             props.onUpdate(data);
-            console.log("1");
+            // console.log("1");
             
             toastr.success("Bạn cập nhật thành công")
             setTimeout(() => {
@@ -97,6 +99,12 @@ const ProductEdit = (props: ProductEditProps) => {
                         })}
                         
                     </select>
+                </div>
+                <div className="mb-3">
+                    <div className="float-start">
+                        <label htmlFor="">Miêu tả</label>
+                    </div>
+                    <textarea className="form-control" {...register('desc')}></textarea>
                 </div>
         <button className="btn btn-success">Cập nhật sản phẩm</button>
     </form>

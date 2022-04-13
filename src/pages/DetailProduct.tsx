@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { read } from "../api/product";
 import { ProductType } from "../types/product";
 
@@ -18,13 +18,21 @@ const DetailProduct = (props: ProductsProps) => {
   }, []);
   return (
     <div className="row">
-      <div className="col-3">
-        <img className="" src={product?.img} alt="" />
+      <div className="row">
+        <div className="col-3">
+          <img className="" src={product?.img} alt="" />
+        </div>
+        <div className="col-6 mx-auto">
+          <h3>Sản phẩm: {product?.name}</h3>
+          <p>Giá:{product?.price}</p>
+          <span>{product?.desc}</span> <br />
+          <button className="btn btn-primary float-end">Add to card</button>
+        </div>
       </div>
-      <div className="col-6 mx-auto">
-        <h3>Sản phẩm: {product?.name}</h3>
-        <p>Giá:{product?.price}</p>
+      <div className="row">
+        <h3>Sản phẩm cùng danh mục</h3>
       </div>
+      
     </div>
   );
 };

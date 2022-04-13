@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import Footer from '../../components/Footer'
 import HeaderWeb from '../../components/HeaderWeb'
 import { CateType } from '../../types/categories'
 
@@ -10,7 +11,7 @@ type CateProps = {
 const WebLayout = (props: CateProps) => {
   console.log(props.cate)
   return (
-    <div>
+    <div className='container-fluid'>
         <header>
             <HeaderWeb/>
         </header>
@@ -19,7 +20,7 @@ const WebLayout = (props: CateProps) => {
             <Outlet/>
         </main>
         <footer>
-            Footer
+            <Footer/>
         </footer>
     </div>
   )

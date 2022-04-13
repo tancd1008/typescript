@@ -18,6 +18,7 @@ type FormValues = {
     price: number;
     img:string;
     category:string
+    desc:string
 };
 
 const ProductAdd = (props: ProductAddProps) => {
@@ -62,7 +63,9 @@ const ProductAdd = (props: ProductAddProps) => {
                     <div className="float-start">
                         <label htmlFor="">Giá</label>
                     </div>
-                    <input type="number" className="form-control" {...register("price")} placeholder='Nhap gia'/>
+                    <input type="number" className="form-control" {...register("price",{ required: true, minLength: 5 })} placeholder='Nhap gia'/>
+                    {errors.price && errors.price.type === "required" && (<span className="text-danger">Required</span>)}
+                    {errors.price && errors.price.type === "minLength" && (<span className="text-danger">MinLength</span>)}
                 </div>
                 
                 <div className="mb-3">
@@ -85,6 +88,12 @@ const ProductAdd = (props: ProductAddProps) => {
                 {/* <div className="mb-3">
                         <img src={preview || "https://res.cloudinary.com/tancd/image/upload/v1649231678/no-thumbnail-medium-16315289445371324098298-0-0-620-992-crop-16315296413801134506614_vc8xjb_gmweq6.png"}  alt="" />
                 </div> */}
+                <div className="mb-3">
+                    <div className="float-start">
+                        <label htmlFor="">Miêu tả</label>
+                    </div>
+                    <textarea className="form-control" {...register('desc')}></textarea>
+                </div>
                 <button className="btn btn-success">Thêm mới sản phẩm</button>
             </form>
         </div>
