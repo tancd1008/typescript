@@ -17,7 +17,7 @@ type FormInputs = {
     name: string,
     price: number,
     img:string,
-    category:number,
+    category:string,
     desc:string
 }
 

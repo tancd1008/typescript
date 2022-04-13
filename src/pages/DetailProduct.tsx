@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { read } from "../api/product";
 import { ProductType } from "../types/product";
+import ProductsSimilar from "./ProductsSimilar";
 
 type ProductsProps = {};
 
@@ -31,6 +32,7 @@ const DetailProduct = (props: ProductsProps) => {
       </div>
       <div className="row">
         <h3>Sản phẩm cùng danh mục</h3>
+        <ProductsSimilar categoryId={product?.category}/>
       </div>
       
     </div>

@@ -1,5 +1,7 @@
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form";
+import toastr from 'toastr'
+import "toastr/build/toastr.min.css";
 import { useNavigate } from 'react-router-dom';
 import { singup } from '../api/user';
 import { UserType } from '../types/user';
@@ -16,8 +18,16 @@ const Signup = (props: SignUpProps) => {
     const navigate = useNavigate();
     const {register, handleSubmit, formState: { errors }} = useForm<FormValues>()
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
+      try {
         await singup(data);
+        toastr.success("Bạn đăng ký thành công")
+        setTimeout (()=>{
         navigate('/signin')
+        },1500)
+      } catch (error) {
+        toastr.error("Tài khoản đã tồn tại")
+      }
+       
     }
   return (
     <div>

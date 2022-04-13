@@ -16,7 +16,7 @@ const WebLayout = (props: CateProps) => {
             <HeaderWeb/>
         </header>
         
-        <main>
+        <main className='min-vh-100'>
             <Outlet/>
         </main>
         <footer>
