@@ -4,15 +4,17 @@ import { readCate } from '../api/category'
 import { ProductType } from '../types/product'
 
 type ProductsProps = {
-    categoryId?:any
+    categoryId:any
 }
 
 const ProductsSimilar = ({categoryId}: ProductsProps) => {
     const[products,setProducts] = useState<any>()
     useEffect(() => {
         const getProducts = async () => {
-            const {data} = await readCate(categoryId)
-            setProducts(data)
+            if(categoryId){
+                const {data} = await readCate(categoryId)
+                setProducts(data)
+            }
         }
         getProducts()
     },[categoryId])
